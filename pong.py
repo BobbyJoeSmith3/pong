@@ -46,7 +46,15 @@ def draw(canvas):
     ball_pos[1] += ball_vel[1]
 
     # draw ball
-    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Green")
+    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Green
+
+    # collide and reflect off of top and bottom of canvas
+    # top
+    if ball_pos[1] <= BALL_RADIUS:
+        ball_vel[1] = - ball_vel[1]
+    #bottom
+    if ball_pos[1] >= HEIGHT - BALL_RADIUS:
+        ball_vel[1] = - ball_vel[1]
 
     # update paddle's vertical position, keep paddle on the screen
 
