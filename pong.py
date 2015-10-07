@@ -14,6 +14,7 @@ HALF_PAD_HEIGHT = PAD_HEIGHT / 2
 LEFT = False
 RIGHT = True
 ball_pos = [WIDTH / 2, HEIGHT / 2]
+ball_vel = [1, 0] # pixels per update (1/60 seconds)
 
 # initialize ball_pos and ball_vel for new bal in middle of table
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
@@ -36,6 +37,8 @@ def draw(canvas):
     canvas.draw_line([WIDTH - PAD_WIDTH, 0],[WIDTH - PAD_WIDTH, HEIGHT], 1, "White")
 
     # update ball
+    ball_pos[0] += ball_vel[0]
+    ball_pos[1] += ball_vel[1]
 
     # draw ball
     canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Green")
