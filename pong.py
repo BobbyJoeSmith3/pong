@@ -21,9 +21,14 @@ ball_vel = [1, -1] # pixels per update (1/60 seconds)
 def spawn_ball(direction):
     global ball_pos, ball_vel # these are vectors stored as lists
 
-    ball_pos = [WIDTH / 2, HEIGHT /2]
-    ball_vel = [1, -1]
+    # start ball position in middle of canvas
+    ball_pos = [WIDTH / 2, HEIGHT / 2]
 
+    # randomly assign velocity based on direction
+    if direction == RIGHT :
+        ball_vel = [random.randrange(2, 5), - random.randrange(1, 4)]
+    else:
+        ball_vel = [- random.randrange(2, 5), - random.randrange(1, 4)]
 
 # define event handlers
 def new_game():
