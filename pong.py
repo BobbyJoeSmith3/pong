@@ -57,9 +57,17 @@ def draw(canvas):
     # top
     if ball_pos[1] <= BALL_RADIUS:
         ball_vel[1] = - ball_vel[1]
-    #bottom
+    # bottom
     if ball_pos[1] >= HEIGHT - BALL_RADIUS:
         ball_vel[1] = - ball_vel[1]
+
+    # determine whether the gutter and ball collide
+    # left gutter
+    if ball_pos[0] - BALL_RADIUS <= PAD_WIDTH:
+        spawn_ball(RIGHT)
+    # right gutter
+    if ball_pos[0] + BALL_RADIUS >= WIDTH - PAD_WIDTH:
+        spawn_ball(LEFT)
 
     # update paddle's vertical position, keep paddle on the screen
 
