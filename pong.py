@@ -15,6 +15,8 @@ LEFT = False
 RIGHT = True
 ball_pos = [WIDTH / 2, HEIGHT / 2]
 ball_vel = [1, -1] # pixels per update (1/60 seconds)
+paddle1_pos = (HEIGHT/2)
+paddle2_pos = (HEIGHT/2)
 
 # initialize ball_pos and ball_vel for new bal in middle of table
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
@@ -51,7 +53,7 @@ def draw(canvas):
     ball_pos[1] += ball_vel[1]
 
     # draw ball
-    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Green
+    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Green")
 
     # collide and reflect off of top and bottom of canvas
     # top
@@ -72,20 +74,17 @@ def draw(canvas):
     # update paddle's vertical position, keep paddle on the screen
 
     # draw paddles
-    # draw paddles
-    paddle1_pos = (HEIGHT/2)
-    paddle2_pos = (HEIGHT/2)
     # paddle1 -- left paddle
-    canvas.draw_polygon([[0, paddle1_pos - (PAD_HEIGHT/2)],
-                         [PAD_WIDTH, paddle1_pos - (PAD_HEIGHT/2)],
-                         [PAD_WIDTH, paddle1_pos + (PAD_HEIGHT/2)],
-                         [0, paddle1_pos + (PAD_HEIGHT/2)]],
+    canvas.draw_polygon([[0, paddle1_pos - HALF_PAD_HEIGHT],
+                         [PAD_WIDTH, paddle1_pos - HALF_PAD_HEIGHT],
+                         [PAD_WIDTH, paddle1_pos + HALF_PAD_HEIGHT],
+                         [0, paddle1_pos + HALF_PAD_HEIGHT]],
                          1, 'White', 'White')
     # paddle2 -- right paddle
-    canvas.draw_polygon([[(WIDTH - PAD_WIDTH), paddle2_pos - (PAD_HEIGHT/2)],
-                         [WIDTH, paddle2_pos - (PAD_HEIGHT/2)],
-                         [WIDTH, paddle2_pos + (PAD_HEIGHT/2)],
-                         [(WIDTH - PAD_WIDTH), paddle2_pos + (PAD_HEIGHT/2)]],
+    canvas.draw_polygon([[(WIDTH - PAD_WIDTH), paddle2_pos - HALF_PAD_HEIGHT],
+                         [WIDTH, paddle2_pos - HALF_PAD_HEIGHT],
+                         [WIDTH, paddle2_pos + HALF_PAD_HEIGHT],
+                         [(WIDTH - PAD_WIDTH), paddle2_pos + HALF_PAD_HEIGHT]],
                          1, 'White', 'White')
 
     # determine whether paddle and ball collide
