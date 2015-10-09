@@ -72,6 +72,19 @@ def draw(canvas):
     # update paddle's vertical position, keep paddle on the screen
 
     # draw paddles
+    # draw paddles
+    # left paddle
+    canvas.draw_polygon([[0, (HEIGHT/2) - (PAD_HEIGHT/2)],
+                         [PAD_WIDTH, (HEIGHT/2) - (PAD_HEIGHT/2)],
+                         [PAD_WIDTH, (HEIGHT/2) + (PAD_HEIGHT/2)],
+                         [0, (HEIGHT/2) + (PAD_HEIGHT/2)]],
+                         1, 'White', 'White')
+    # right paddle
+    canvas.draw_polygon([[(WIDTH - PAD_WIDTH), (HEIGHT/2) - (PAD_HEIGHT/2)],
+                         [WIDTH, (HEIGHT/2) - (PAD_HEIGHT/2)],
+                         [WIDTH, (HEIGHT/2) + (PAD_HEIGHT/2)],
+                         [(WIDTH - PAD_WIDTH), (HEIGHT/2) + (PAD_HEIGHT/2)]],
+                         1, 'White', 'White')
 
     # determine whether paddle and ball collide
 
