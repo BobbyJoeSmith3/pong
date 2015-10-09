@@ -73,17 +73,19 @@ def draw(canvas):
 
     # draw paddles
     # draw paddles
-    # left paddle
-    canvas.draw_polygon([[0, (HEIGHT/2) - (PAD_HEIGHT/2)],
-                         [PAD_WIDTH, (HEIGHT/2) - (PAD_HEIGHT/2)],
-                         [PAD_WIDTH, (HEIGHT/2) + (PAD_HEIGHT/2)],
-                         [0, (HEIGHT/2) + (PAD_HEIGHT/2)]],
+    paddle1_pos = (HEIGHT/2)
+    paddle2_pos = (HEIGHT/2)
+    # paddle1 -- left paddle
+    canvas.draw_polygon([[0, paddle1_pos - (PAD_HEIGHT/2)],
+                         [PAD_WIDTH, paddle1_pos - (PAD_HEIGHT/2)],
+                         [PAD_WIDTH, paddle1_pos + (PAD_HEIGHT/2)],
+                         [0, paddle1_pos + (PAD_HEIGHT/2)]],
                          1, 'White', 'White')
-    # right paddle
-    canvas.draw_polygon([[(WIDTH - PAD_WIDTH), (HEIGHT/2) - (PAD_HEIGHT/2)],
-                         [WIDTH, (HEIGHT/2) - (PAD_HEIGHT/2)],
-                         [WIDTH, (HEIGHT/2) + (PAD_HEIGHT/2)],
-                         [(WIDTH - PAD_WIDTH), (HEIGHT/2) + (PAD_HEIGHT/2)]],
+    # paddle2 -- right paddle
+    canvas.draw_polygon([[(WIDTH - PAD_WIDTH), paddle2_pos - (PAD_HEIGHT/2)],
+                         [WIDTH, paddle2_pos - (PAD_HEIGHT/2)],
+                         [WIDTH, paddle2_pos + (PAD_HEIGHT/2)],
+                         [(WIDTH - PAD_WIDTH), paddle2_pos + (PAD_HEIGHT/2)]],
                          1, 'White', 'White')
 
     # determine whether paddle and ball collide
