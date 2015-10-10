@@ -17,8 +17,8 @@ ball_pos = [WIDTH / 2, HEIGHT / 2]
 ball_vel = [1, -1] # pixels per update (1/60 seconds)
 paddle1_pos = (HEIGHT/2)
 paddle2_pos = (HEIGHT/2)
-paddle1_vel = -1
-paddle2_vel = 1
+paddle1_vel = 0
+paddle2_vel = 0
 
 # initialize ball_pos and ball_vel for new bal in middle of table
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
@@ -103,6 +103,16 @@ def draw(canvas):
 
 def keydown(key):
     global paddle1_vel, paddle2_vel
+
+    paddle_speed = 1
+    # paddle1
+    if key==simplegui.KEY_MAP["W"] and\
+    key==simplegui.KEY_MAP["S"]:
+        paddle1_vel = 0
+    elif key==simplegui.KEY_MAP["W"]:
+        paddle1_vel -= paddle_speed
+    elif key==simplegui.KEY_MAP["S"]:
+        paddle1_vel += paddle_speed
 
 def keyup(key):
     global paddle1_vel, paddle2_vel
