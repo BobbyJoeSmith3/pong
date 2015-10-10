@@ -17,6 +17,8 @@ ball_pos = [WIDTH / 2, HEIGHT / 2]
 ball_vel = [1, -1] # pixels per update (1/60 seconds)
 paddle1_pos = (HEIGHT/2)
 paddle2_pos = (HEIGHT/2)
+paddle1_vel = [0, -1]
+paddle2_vel = [0, 1]
 
 # initialize ball_pos and ball_vel for new bal in middle of table
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
@@ -72,6 +74,18 @@ def draw(canvas):
         spawn_ball(LEFT)
 
     # update paddle's vertical position, keep paddle on the screen
+    # paddle 1 top restraint
+    if paddle1_pos + paddle1_vel[1] >= HALF_PAD_HEIGHT:
+        paddle1_pos += paddle1_vel[1]
+    # paddle 1 bottom restraint
+    if paddle1_pos + paddle1_vel[1] <= HEIGHT - HALF_PAD_HEIGHT:
+        paddle1_pos += paddle1_vel[1]
+    # paddle 2 top restraint
+    if paddle2_pos + paddle2_vel[1] >= HALF_PAD_HEIGHT:
+        paddle2_pos += paddle2_vel[1]
+    # paddle 2 bottom restraint
+    if paddle2_pos + paddle2_vel[1] <= HEIGHT - HALF_PAD_HEIGHT:
+        paddle2_pos += paddle2_vel[1]
 
     # draw paddles
     # paddle1 -- left paddle
