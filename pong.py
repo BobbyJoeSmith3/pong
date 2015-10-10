@@ -65,14 +65,6 @@ def draw(canvas):
     if ball_pos[1] >= HEIGHT - BALL_RADIUS:
         ball_vel[1] = - ball_vel[1]
 
-    # determine whether the gutter and ball collide
-    # left gutter
-    #if ball_pos[0] - BALL_RADIUS <= PAD_WIDTH:
-    #    spawn_ball(RIGHT)
-    # right gutter
-    if ball_pos[0] + BALL_RADIUS >= WIDTH - PAD_WIDTH:
-        spawn_ball(LEFT)
-
     # update paddle's vertical position, keep paddle on the screen
     # paddle 1 top and bottom restraint
     if paddle1_pos + paddle1_vel >= HALF_PAD_HEIGHT and\
@@ -105,6 +97,13 @@ def draw(canvas):
         ball_vel[0] = - ball_vel[0]
     elif ball_pos[0] - BALL_RADIUS <= PAD_WIDTH:
         spawn_ball(RIGHT)
+    # paddle2 -- right paddle
+    if (ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT and\
+    ball_pos[1] <= paddle2_pos + HALF_PAD_HEIGHT) and\
+    (ball_pos[0] + BALL_RADIUS) >= WIDTH - PAD_WIDTH:
+        ball_vel[0] = - ball_vel[0]
+    elif ball_pos[0] + BALL_RADIUS >= WIDTH - PAD_WIDTH:
+        spawn_ball(LEFT)
 
     # draw scores
 
