@@ -114,6 +114,15 @@ def keydown(key):
     elif key==simplegui.KEY_MAP["S"]:
         paddle1_vel += paddle_speed
 
+    # paddle2
+    if key==simplegui.KEY_MAP["up"] and\
+    key==simplegui.KEY_MAP["down"]:
+        paddle2_vel = 0
+    elif key==simplegui.KEY_MAP["up"]:
+        paddle2_vel -= paddle_speed
+    elif key==simplegui.KEY_MAP["down"]:
+        paddle2_vel += paddle_speed
+
 def keyup(key):
     global paddle1_vel, paddle2_vel
 
@@ -122,6 +131,12 @@ def keyup(key):
         paddle1_vel = 0
     elif key==simplegui.KEY_MAP["S"]:
         paddle1_vel = 0
+
+    # paddle2
+    if key==simplegui.KEY_MAP["up"]:
+        paddle2_vel = 0
+    elif key==simplegui.KEY_MAP["down"]:
+        paddle2_vel = 0
 
 
 # create frame
