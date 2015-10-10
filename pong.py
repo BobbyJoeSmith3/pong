@@ -117,6 +117,12 @@ def keydown(key):
 def keyup(key):
     global paddle1_vel, paddle2_vel
 
+    # paddle1
+    if key==simplegui.KEY_MAP["W"]:
+        paddle1_vel = 0
+    elif key==simplegui.KEY_MAP["S"]:
+        paddle1_vel = 0
+
 
 # create frame
 frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
