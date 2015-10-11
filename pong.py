@@ -115,6 +115,9 @@ def draw(canvas):
     # right paddle -- player2 score
     canvas.draw_text(str(score2), [375, 50], 50, "White")
 
+def button_handler():
+    new_game()
+
 def keydown(key):
     global paddle1_vel, paddle2_vel
 
@@ -158,6 +161,7 @@ frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
 frame.set_draw_handler(draw)
 frame.set_keydown_handler(keydown)
 frame.set_keyup_handler(keyup)
+frame.add_button('New Game', button_handler, 100)
 
 
 # start frame
