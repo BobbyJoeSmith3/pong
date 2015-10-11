@@ -20,6 +20,8 @@ paddle2_pos = (HEIGHT/2)
 paddle1_vel = 0
 paddle2_vel = 0
 
+
+
 # initialize ball_pos and ball_vel for new bal in middle of table
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
 def spawn_ball(direction):
@@ -34,18 +36,25 @@ def spawn_ball(direction):
     else:
         ball_vel = [- random.randrange(2, 5), - random.randrange(1, 4)]
 
+
+
 # define event handlers
 def new_game():
     global paddle1_pos, paddle2_pos, paddle1_vel, paddle2_vel  # these are numbers
     global score1, score2  # these are ints
 
+    # reset score
     score1 = 0
     score2 = 0
+
+    # spawn ball
     spawn_ball(RIGHT)
+
+
 
 def draw(canvas):
     global score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel
-
+    global paddle1_vel, paddle2_vel
 
     # draw mid line and gutters
     canvas.draw_line([WIDTH / 2, 0],[WIDTH / 2, HEIGHT], 1, "White")
@@ -92,7 +101,7 @@ def draw(canvas):
                          1, 'White', 'White')
 
     # determine whether paddle and ball collide
-    # left paddle, paddle 1
+    # paddle1 -- left paddle
     if (ball_pos[1] >= paddle1_pos - HALF_PAD_HEIGHT and\
     ball_pos[1] <= paddle1_pos + HALF_PAD_HEIGHT) and\
     (ball_pos[0] - BALL_RADIUS) <= PAD_WIDTH:
@@ -115,13 +124,17 @@ def draw(canvas):
     # right paddle -- player2 score
     canvas.draw_text(str(score2), [375, 50], 50, "White")
 
+
+
 def button_handler():
     new_game()
+
+
 
 def keydown(key):
     global paddle1_vel, paddle2_vel
 
-    paddle_speed = 1
+    paddle_speed = 4
     # paddle1
     if key==simplegui.KEY_MAP["W"] and\
     key==simplegui.KEY_MAP["S"]:
@@ -140,6 +153,8 @@ def keydown(key):
     elif key==simplegui.KEY_MAP["down"]:
         paddle2_vel += paddle_speed
 
+
+
 def keyup(key):
     global paddle1_vel, paddle2_vel
 
@@ -156,12 +171,14 @@ def keyup(key):
         paddle2_vel = 0
 
 
+
 # create frame
 frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
 frame.set_draw_handler(draw)
 frame.set_keydown_handler(keydown)
 frame.set_keyup_handler(keyup)
 frame.add_button('New Game', button_handler, 100)
+
 
 
 # start frame
