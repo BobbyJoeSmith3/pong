@@ -39,6 +39,8 @@ def new_game():
     global paddle1_pos, paddle2_pos, paddle1_vel, paddle2_vel  # these are numbers
     global score1, score2  # these are ints
 
+    score1 = 0
+    score2 = 0
     spawn_ball(RIGHT)
 
 def draw(canvas):
@@ -96,6 +98,7 @@ def draw(canvas):
     (ball_pos[0] - BALL_RADIUS) <= PAD_WIDTH:
         ball_vel[0] = - (ball_vel[0] * 1.10)
     elif ball_pos[0] - BALL_RADIUS <= PAD_WIDTH:
+        score2 += 1
         spawn_ball(RIGHT)
     # paddle2 -- right paddle
     if (ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT and\
@@ -103,9 +106,14 @@ def draw(canvas):
     (ball_pos[0] + BALL_RADIUS) >= WIDTH - PAD_WIDTH:
         ball_vel[0] = - (ball_vel[0] * 1.10)
     elif ball_pos[0] + BALL_RADIUS >= WIDTH - PAD_WIDTH:
+        score1 += 1
         spawn_ball(LEFT)
 
     # draw scores
+    # left paddle -- player1 score
+    canvas.draw_text(str(score1), [200, 50], 50, "White")
+    # right paddle -- player2 score
+    canvas.draw_text(str(score2), [375, 50], 50, "White")
 
 def keydown(key):
     global paddle1_vel, paddle2_vel
