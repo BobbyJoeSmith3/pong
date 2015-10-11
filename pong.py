@@ -136,19 +136,13 @@ def keydown(key):
 
     paddle_speed = 4
     # paddle1
-    if key==simplegui.KEY_MAP["W"] and\
-    key==simplegui.KEY_MAP["S"]:
-        paddle1_vel = 0
-    elif key==simplegui.KEY_MAP["W"]:
+    if key==simplegui.KEY_MAP["W"]:
         paddle1_vel -= paddle_speed
     elif key==simplegui.KEY_MAP["S"]:
         paddle1_vel += paddle_speed
 
     # paddle2
-    if key==simplegui.KEY_MAP["up"] and\
-    key==simplegui.KEY_MAP["down"]:
-        paddle2_vel = 0
-    elif key==simplegui.KEY_MAP["up"]:
+    if key==simplegui.KEY_MAP["up"]:
         paddle2_vel -= paddle_speed
     elif key==simplegui.KEY_MAP["down"]:
         paddle2_vel += paddle_speed
@@ -158,17 +152,18 @@ def keydown(key):
 def keyup(key):
     global paddle1_vel, paddle2_vel
 
+    paddle_speed = 4
     # paddle1
-    if key==simplegui.KEY_MAP["W"]:
-        paddle1_vel = 0
-    elif key==simplegui.KEY_MAP["S"]:
-        paddle1_vel = 0
+    if key==simplegui.KEY_MAP["w"]:
+        paddle1_vel += paddle_speed
+    elif key==simplegui.KEY_MAP["s"]:
+        paddle1_vel -= paddle_speed
 
     # paddle2
     if key==simplegui.KEY_MAP["up"]:
-        paddle2_vel = 0
+        paddle2_vel += paddle_speed
     elif key==simplegui.KEY_MAP["down"]:
-        paddle2_vel = 0
+        paddle2_vel -= paddle_speed
 
 
 
@@ -177,7 +172,7 @@ frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
 frame.set_draw_handler(draw)
 frame.set_keydown_handler(keydown)
 frame.set_keyup_handler(keyup)
-frame.add_button('New Game', button_handler, 100)
+frame.add_button("New Game", button_handler, 100)
 
 
 
